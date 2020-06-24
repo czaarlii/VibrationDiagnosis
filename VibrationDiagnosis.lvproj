@@ -170,12 +170,12 @@
 				<Item Name="whitespace.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/whitespace.ctl"/>
 			</Item>
 			<Item Name="AccelerationDataFrames.ctl" Type="VI" URL="../MobileAnalyzer/mainVIs/UIVIs/AccelerationDataFrames.ctl"/>
+			<Item Name="ACommand.ctl" Type="VI" URL="../MobileAnalyzer/mainVIs/AmasterVIs/ACommand.ctl"/>
 			<Item Name="appendRawDataToWaveform.vi" Type="VI" URL="../mainVIs/analyzeAccelerationDataVIs/appendRawDataToWaveform.vi"/>
 			<Item Name="FGVAction.ctl" Type="VI" URL="../MobileAnalyzer/mainVIs/utilities/FGVAction.ctl"/>
 			<Item Name="NiFpgaLv.dll" Type="Document" URL="NiFpgaLv.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="UIInput.ctl" Type="VI" URL="../MobileAnalyzer/mainVIs/UIVIs/UIInput.ctl"/>
 			<Item Name="UIOutput.ctl" Type="VI" URL="../MobileAnalyzer/mainVIs/UIVIs/UIOutput.ctl"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
