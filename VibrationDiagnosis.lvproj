@@ -207,13 +207,18 @@
 				<Item Name="VariantType.lvlib" Type="Library" URL="/&lt;vilib&gt;/Utility/VariantDataType/VariantType.lvlib"/>
 				<Item Name="whitespace.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/whitespace.ctl"/>
 			</Item>
-			<Item Name="AccelerationDataFrames.ctl" Type="VI" URL="../MobileAnalyzer/mainVIs/UIVIs/AccelerationDataFrames.ctl"/>
+			<Item Name="AccelerationDataFrames.ctl" Type="VI" URL="../MobileAnalyzer/mainVIs/analyzeAccelerationDataVIs/AccelerationDataFrames.ctl"/>
 			<Item Name="ACommand.ctl" Type="VI" URL="../MobileAnalyzer/mainVIs/AmasterVIs/ACommand.ctl"/>
+			<Item Name="AnalyzedVibrationsData.ctl" Type="VI" URL="../MobileAnalyzer/mainVIs/analyzeAccelerationDataVIs/AnalyzedVibrationsData.ctl"/>
 			<Item Name="appendRawDataToWaveform.vi" Type="VI" URL="../mainVIs/analyzeAccelerationDataVIs/appendRawDataToWaveform.vi"/>
+			<Item Name="AxesValueAndFaultDetection.ctl" Type="VI" URL="../MobileAnalyzer/mainVIs/analyzeAccelerationDataVIs/calculateFaultIndicatorsVIs/AxesValueAndFaultDetection.ctl"/>
+			<Item Name="FaultDetections.ctl" Type="VI" URL="../MobileAnalyzer/mainVIs/analyzeAccelerationDataVIs/calculateFaultIndicatorsVIs/FaultDetections.ctl"/>
+			<Item Name="FaultParameter.ctl" Type="VI" URL="../MobileAnalyzer/mainVIs/analyzeAccelerationDataVIs/calculateFaultIndicatorsVIs/FaultParameter.ctl"/>
 			<Item Name="FGVAction.ctl" Type="VI" URL="../MobileAnalyzer/mainVIs/utilities/FGVAction.ctl"/>
 			<Item Name="NiFpgaLv.dll" Type="Document" URL="NiFpgaLv.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
+			<Item Name="Thresholds.ctl" Type="VI" URL="../MobileAnalyzer/mainVIs/analyzeAccelerationDataVIs/calculateFaultIndicatorsVIs/Thresholds.ctl"/>
 			<Item Name="UIOutput.ctl" Type="VI" URL="../MobileAnalyzer/mainVIs/UIVIs/UIOutput.ctl"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
@@ -246,7 +251,7 @@
 		<Property Name="target.RTTarget.ApplicationPath" Type="Path">/home/lvuser/natinst/bin/startup.rtexe</Property>
 		<Property Name="target.RTTarget.EnableFileSharing" Type="Bool">true</Property>
 		<Property Name="target.RTTarget.IPAccess" Type="Str">+*</Property>
-		<Property Name="target.RTTarget.LaunchAppAtBoot" Type="Bool">true</Property>
+		<Property Name="target.RTTarget.LaunchAppAtBoot" Type="Bool">false</Property>
 		<Property Name="target.RTTarget.VIPath" Type="Path">/c/ni-rt/startup</Property>
 		<Property Name="target.server.app.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="target.server.control.propertiesEnabled" Type="Bool">true</Property>
@@ -371,6 +376,7 @@ AddOutputFilter chunkFilter
 				<Item Name="Directory of Top Level VI.vi" Type="VI" URL="/&lt;vilib&gt;/picture/jpeg.llb/Directory of Top Level VI.vi"/>
 				<Item Name="DTbl Digital Size.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DTblOps.llb/DTbl Digital Size.vi"/>
 				<Item Name="DTbl Digital Subset.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DTblOps.llb/DTbl Digital Subset.vi"/>
+				<Item Name="DU64_U32SubtractWithBorrow.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/TSOps.llb/DU64_U32SubtractWithBorrow.vi"/>
 				<Item Name="DWDT Digital Size.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DWDTOps.llb/DWDT Digital Size.vi"/>
 				<Item Name="DWDT Error Code.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DWDTOps.llb/DWDT Error Code.vi"/>
 				<Item Name="DWDT Get Waveform Subset.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DWDTOps.llb/DWDT Get Waveform Subset.vi"/>
@@ -405,6 +411,7 @@ AddOutputFilter chunkFilter
 				<Item Name="I2C Channels Enum.ctl" Type="VI" URL="/&lt;vilib&gt;/myRIO/Common/Instrument Driver Framework/myRIO v1.0/I2C/typedefs/I2C Channels Enum.ctl"/>
 				<Item Name="I2C Channels FPGA Reference.ctl" Type="VI" URL="/&lt;vilib&gt;/myRIO/Common/Instrument Driver Framework/myRIO v1.0/I2C/typedefs/I2C Channels FPGA Reference.ctl"/>
 				<Item Name="I2C.lvlib" Type="Library" URL="/&lt;vilib&gt;/myRIO/Instrument Drivers/Onboard IO/I2C/I2C.lvlib"/>
+				<Item Name="I128 Timestamp.ctl" Type="VI" URL="/&lt;vilib&gt;/Waveform/TSOps.llb/I128 Timestamp.ctl"/>
 				<Item Name="imagedata.ctl" Type="VI" URL="/&lt;vilib&gt;/picture/picture.llb/imagedata.ctl"/>
 				<Item Name="IO Config FPGA Reference.ctl" Type="VI" URL="/&lt;vilib&gt;/myRIO/Common/Instrument Driver Framework/myRIO v1.0/Resource Manager/typedefs/IO Config FPGA Reference.ctl"/>
 				<Item Name="IO IRQ Channels Enum.ctl" Type="VI" URL="/&lt;vilib&gt;/myRIO/Common/Instrument Driver Framework/myRIO v1.0/IRQ/typedefs/IO IRQ Channels Enum.ctl"/>
@@ -448,8 +455,10 @@ AddOutputFilter chunkFilter
 				<Item Name="myRIO v1.1 Open I2C.vi" Type="VI" URL="/&lt;vilib&gt;/myRIO/Common/Instrument Driver Framework/myRIO v1.0/I2C/vis/myRIO v1.1 Open I2C.vi"/>
 				<Item Name="myRIO v1.1 Open.vi" Type="VI" URL="/&lt;vilib&gt;/myRIO/Common/Instrument Driver Framework/myRIO v1.0/myRIO v1.1 Open.vi"/>
 				<Item Name="Named Mutex.ctl" Type="VI" URL="/&lt;vilib&gt;/myRIO/Common/Instrument Driver Framework/Utilities/typedefs/Named Mutex.ctl"/>
+				<Item Name="NI_AALBase.lvlib" Type="Library" URL="/&lt;vilib&gt;/Analysis/NI_AALBase.lvlib"/>
 				<Item Name="NI_AALPro.lvlib" Type="Library" URL="/&lt;vilib&gt;/Analysis/NI_AALPro.lvlib"/>
 				<Item Name="NI_FileType.lvlib" Type="Library" URL="/&lt;vilib&gt;/Utility/lvfile.llb/NI_FileType.lvlib"/>
+				<Item Name="NI_Gmath.lvlib" Type="Library" URL="/&lt;vilib&gt;/gmath/NI_Gmath.lvlib"/>
 				<Item Name="NI_HTML.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/Utility/NIReport.llb/HTML/NI_HTML.lvclass"/>
 				<Item Name="NI_MABase.lvlib" Type="Library" URL="/&lt;vilib&gt;/measure/NI_MABase.lvlib"/>
 				<Item Name="NI_MAPro.lvlib" Type="Library" URL="/&lt;vilib&gt;/measure/NI_MAPro.lvlib"/>
@@ -510,6 +519,7 @@ AddOutputFilter chunkFilter
 				<Item Name="Timer IRQ Array.ctl" Type="VI" URL="/&lt;vilib&gt;/myRIO/Common/Instrument Driver Framework/myRIO v1.0/IRQ/typedefs/Timer IRQ Array.ctl"/>
 				<Item Name="Timer IRQ FPGA Reference.ctl" Type="VI" URL="/&lt;vilib&gt;/myRIO/Common/Instrument Driver Framework/myRIO v1.0/IRQ/typedefs/Timer IRQ FPGA Reference.ctl"/>
 				<Item Name="Timer IRQ.ctl" Type="VI" URL="/&lt;vilib&gt;/myRIO/Common/Instrument Driver Framework/myRIO v1.0/IRQ/typedefs/Timer IRQ.ctl"/>
+				<Item Name="Timestamp Subtract.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/TSOps.llb/Timestamp Subtract.vi"/>
 				<Item Name="Unlock Mutex.vi" Type="VI" URL="/&lt;vilib&gt;/myRIO/Common/Instrument Driver Framework/Utilities/vis/Unlock Mutex.vi"/>
 				<Item Name="Utilities.lvlib" Type="Library" URL="/&lt;vilib&gt;/myRIO/Instrument Drivers/Utilities/Utilities.lvlib"/>
 				<Item Name="Validate Channels.vi" Type="VI" URL="/&lt;vilib&gt;/myRIO/Common/Instrument Driver Framework/Utilities/vis/Validate Channels.vi"/>
@@ -555,8 +565,10 @@ AddOutputFilter chunkFilter
 			<Item Name="NiFpgaLv.dll" Type="Document" URL="NiFpgaLv.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="ReceiverData.ctl" Type="VI" URL="../VibrationDiagnosisDesktopApp/mainVIs/GUIVIs/ReceiverData.ctl"/>
-			<Item Name="ReceiverDataType.ctl" Type="VI" URL="../VibrationDiagnosisDesktopApp/mainVIs/GUIVIs/ReceiverDataType.ctl"/>
+			<Item Name="ReceiverData.ctl" Type="VI" URL="../VibrationDiagnosisDesktopApp/mainVIs/communicateWithAnalyzerVIs/ReceiverData.ctl"/>
+			<Item Name="ReceiverDataType.ctl" Type="VI" URL="../VibrationDiagnosisDesktopApp/mainVIs/communicateWithAnalyzerVIs/ReceiverDataType.ctl"/>
+			<Item Name="SenderData.ctl" Type="VI" URL="../VibrationDiagnosisDesktopApp/mainVIs/communicateWithAnalyzerVIs/SenderData.ctl"/>
+			<Item Name="SenderDataType.ctl" Type="VI" URL="../VibrationDiagnosisDesktopApp/mainVIs/communicateWithAnalyzerVIs/SenderDataType.ctl"/>
 			<Item Name="ws_runtime.dll" Type="Document" URL="ws_runtime.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
