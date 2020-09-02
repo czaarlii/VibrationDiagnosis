@@ -1,0 +1,114 @@
+<html>
+	<head>
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<script type="text/javascript">
+			google.charts.load('current', {'packages':['line']});
+			google.charts.setOnLoadCallback(requestData);
+
+			function requestData() 
+			{
+				var xhttp = null;
+		
+				if (window.XMLHttpRequest){
+					// code for IE7+, Firefox, Chrome, Opera, Safari
+				xhttp = new XMLHttpRequest();
+			}
+			else 
+			{
+				// code for IE6, IE5
+				xhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+		
+			xhttp.onreadystatechange = function() 
+			{
+				if (this.readyState == 4 && this.status == 200) {
+					drawCharts(this.responseText);
+				}
+			};
+		
+			xhttp.open("GET", window.location.href + "ViewAnalysisResults", true);
+			xhttp.send();
+			}
+	  
+			function drawCharts(rawData)
+			{
+				var parsedData = JSON.parse(rawData)["Data"];
+				//document.getElementById("raw_data").innerHTML = rawData;
+				
+				//var data = new Date(parsedData["t0"]);
+				//document.getElementById("parsed").innerHTML = data;
+				
+				for (parameter of parsedData)
+				{
+					//var parameter = parsedData[0];
+					
+					//prepare charts
+					var graphData = new google.visualization.DataTable();
+				
+					graphData.addColumn('number', 'Czas [s]');
+					graphData.addColumn('number', 'X');
+					graphData.addColumn('number', 'Y');
+					graphData.addColumn('number', 'Z');
+					/*
+					var time = new Date(parsedData["t0"]).getTime();
+					var dt = parsedData["dt"] * 1000;
+					
+					for (x in parsedData["Y"])
+					{
+						document.getElementById("parsed").innerHTML = x;
+						graphData.addRows([
+							[new Data(time), x]
+						]);
+						
+						time += dt;
+					}
+					*/
+					
+					graphData.addRows(parameter["Axes3Data"]);
+	
+					/*
+					graphData.addRows([
+						[new Date(),  37.8, 80.8, 41.8],
+						[new Date(),  30.9, 69.5, 32.4],
+						[new Date(),  25.4,   57, 25.7],
+						[new Date(),  11.7, 18.8, 10.5],
+						[new Date(),  11.9, 17.6, 10.4]/*,
+						[6,   8.8, 13.6,  7.7],
+						[7,   7.6, 12.3,  9.6],
+						[8,  12.3, 29.2, 10.6],
+						[9,  16.9, 42.9, 14.8],
+						[10, 12.8, 30.9, 11.6],
+						[11,  5.3,  7.9,  4.7],
+						[12,  6.6,  8.4,  5.2],
+						[13,  4.8,  6.3,  3.6],
+						[14,  4.2,  6.2,  3.4]
+					]);*/
+					
+					var options = {
+						chart: {
+							title: parameter["Name"]
+						},
+						width: 1000,
+						height: 300
+					};
+					
+					var ul = document.getElementById("graphs");
+					var li = document.createElement("li");
+					var graphID = "graph_" + parameter["Name"];
+					
+					li.setAttribute("id", graphID);
+					ul.appendChild(li);
+					
+					var chart = new google.charts.Line(document.getElementById(graphID));
+					chart.draw(graphData, google.charts.Line.convertOptions(options));
+				}
+			}
+		</script>
+	</head>
+	
+	<body>
+		<ul id="graphs"></ul>
+		<div id="raw_data"></div>
+		<div id="parsed"></div>
+	</body>
+</html>
